@@ -13,7 +13,7 @@ public class MainPresenter extends BasePresenter<IMainView>{
         attachView(view);
     }
 
-    public void loadDataByRetrofitRxjava(String cityId) {
+    public void loadDataByRetrofitRxjava() {
         mvpView.showLoading();
         addSubscription(apiStores.loadDataByRetrofitRxjava(),
                 new ApiCallback<DropDownAudioBean>() {
