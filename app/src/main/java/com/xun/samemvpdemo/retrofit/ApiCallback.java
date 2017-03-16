@@ -1,12 +1,12 @@
 package com.xun.samemvpdemo.retrofit;
 
-import io.reactivex.observers.DisposableObserver;
+import rx.Subscriber;
 
 /**
  * Created by xunwang on 17/2/24.
  */
 
-public abstract class ApiCallback<M> extends DisposableObserver<M> {
+public abstract class ApiCallback<M> extends Subscriber<M> {
 
     public abstract void onSuccess(M model);
 

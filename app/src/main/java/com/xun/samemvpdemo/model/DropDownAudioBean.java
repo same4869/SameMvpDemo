@@ -6,7 +6,7 @@ import java.util.List;
  * Created by xunwang on 17/2/24.
  */
 
-public class DropDownAudioBean {
+public class DropDownAudioBean extends BaseBean{
 
     /**
      * list : [{"adoId":199511,"adoTitle":"【星星晚上好】一笔勾销","adopicUrl":"http://w.tingtoutiao

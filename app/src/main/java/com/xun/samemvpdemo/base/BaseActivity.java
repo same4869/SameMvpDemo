@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
@@ -26,16 +27,17 @@ public abstract class BaseActivity extends SupportActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView();
+        setContentView(getLayoutId());
+        ButterKnife.bind(this);
+        mActivity = this;
         initView();
         initData();
     }
 
-    public void setContentView() {
-        super.setContentView(getLayoutId());
-        mActivity = this;
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
-
 
     @Override
     public void setContentView(View view) {
@@ -47,7 +49,6 @@ public abstract class BaseActivity extends SupportActivity {
     public void setContentView(View view, ViewGroup.LayoutParams params) {
         super.setContentView(view, params);
         mActivity = this;
-
     }
 
     public ProgressDialog showProgressDialog() {

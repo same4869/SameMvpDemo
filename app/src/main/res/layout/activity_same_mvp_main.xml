@@ -9,10 +9,10 @@
         android:id="@+id/contentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomBar"/>
+        android:layout_above="@+id/main_bottomBar"/>
 
     <com.roughike.bottombar.BottomBar
-        android:id="@+id/bottomBar"
+        android:id="@+id/main_bottomBar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"

@@ -1,14 +1,13 @@
 package com.xun.samemvpdemo.base;
 
-import com.xun.samemvpdemo.model.DropDownAudioBean;
 import com.xun.samemvpdemo.retrofit.ApiStores;
 import com.xun.samemvpdemo.retrofit.AppClient;
 
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableObserver;
-import io.reactivex.schedulers.Schedulers;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 
 /**
@@ -18,7 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 public class BasePresenter<V> {
     public V mvpView;
     protected ApiStores apiStores;
-    private CompositeDisposable mCompositeSubscription;
+    private CompositeSubscription mCompositeSubscription;
 
     public void attachView(V mvpView) {
         this.mvpView = mvpView;
@@ -34,19 +33,18 @@ public class BasePresenter<V> {
 
     //RXjava取消注册，以避免内存泄露
     public void onUnsubscribe() {
-        if (mCompositeSubscription != null && !mCompositeSubscription.isDisposed()) {
+        if (mCompositeSubscription != null) {
             mCompositeSubscription.clear();
         }
     }
 
 
-    public void addSubscription(Observable<DropDownAudioBean> observable, DisposableObserver disposableObserver) {
+    public void addSubscription(Observable observable, Subscriber subscriber) {
         if (mCompositeSubscription == null) {
-            mCompositeSubscription = new CompositeDisposable();
+            mCompositeSubscription = new CompositeSubscription();
         }
         mCompositeSubscription.add(observable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(disposableObserver));
+                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber));
     }
 }

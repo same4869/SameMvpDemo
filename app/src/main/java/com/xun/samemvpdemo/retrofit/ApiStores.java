@@ -3,8 +3,8 @@ package com.xun.samemvpdemo.retrofit;
 
 import com.xun.samemvpdemo.model.DropDownAudioBean;
 
-import io.reactivex.Observable;
 import retrofit2.http.GET;
+import rx.Observable;
 
 /**
  * Created by xunwang on 17/2/24.

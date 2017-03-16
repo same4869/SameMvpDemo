@@ -18,7 +18,7 @@ public class MainPresenter extends BasePresenter<IMainView>{
         addSubscription(apiStores.loadDataByRetrofitRxjava(),
                 new ApiCallback<DropDownAudioBean>() {
                     @Override
-                    public void onComplete() {
+                    public void onCompleted() {
 
                     }
 
