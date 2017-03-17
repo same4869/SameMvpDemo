@@ -7,6 +7,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.leakcanary.RefWatcher;
+import com.xun.samemvpdemo.app.SameMvpApplication;
+
 import butterknife.ButterKnife;
 import me.yokeyword.fragmentation.SupportActivity;
 
@@ -28,6 +31,8 @@ public abstract class BaseActivity extends SupportActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        RefWatcher refWatcher = SameMvpApplication.getRefWatcher(this);
+        refWatcher.watch(this);
         ButterKnife.bind(this);
         mActivity = this;
         initView();

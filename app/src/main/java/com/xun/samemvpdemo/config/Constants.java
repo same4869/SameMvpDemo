@@ -6,6 +6,7 @@ package com.xun.samemvpdemo.config;
 
 public class Constants {
     public static final boolean IS_DEBUG = Boolean.parseBoolean("true");
+    public static final boolean USE_CANARY = true;
 
 //    http://appapi.tingtoutiao.com/myAppPro/audio/getRollShowAudioList.do  轮播数据
 //    http://appapi.tingtoutiao.com/myAppPro/audio/getDropDownAudio.do?cId=0 列表数据 新闻

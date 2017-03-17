@@ -1,4 +1,4 @@
-package com.xun.samemvpdemo;
+package com.xun.samemvpdemo.view;
 
 import com.xun.samemvpdemo.base.IBaseView;
 import com.xun.samemvpdemo.model.BaseBean;

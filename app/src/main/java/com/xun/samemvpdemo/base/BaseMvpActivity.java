@@ -2,11 +2,14 @@ package com.xun.samemvpdemo.base;
 
 import android.os.Bundle;
 
+import javax.inject.Inject;
+
 /**
  * Created by xunwang on 17/2/24.
  */
 
 public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActivity implements IBaseView {
+    @Inject
     protected P mvpPresenter;
 
     @Override

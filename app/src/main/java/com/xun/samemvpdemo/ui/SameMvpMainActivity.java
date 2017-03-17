@@ -1,10 +1,13 @@
-package com.xun.samemvpdemo;
+package com.xun.samemvpdemo.ui;
 
 import android.support.annotation.IdRes;
 import android.widget.FrameLayout;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
+import com.xun.samemvpdemo.view.IMainView;
+import com.xun.samemvpdemo.presenter.MainPresenter;
+import com.xun.samemvpdemo.R;
 import com.xun.samemvpdemo.base.BaseMvpActivity;
 import com.xun.samemvpdemo.fragment.MusicFragment;
 import com.xun.samemvpdemo.fragment.NewsFragment;

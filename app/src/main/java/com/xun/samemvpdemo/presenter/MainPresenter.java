@@ -1,5 +1,6 @@
-package com.xun.samemvpdemo;
+package com.xun.samemvpdemo.presenter;
 
+import com.xun.samemvpdemo.view.IMainView;
 import com.xun.samemvpdemo.base.BasePresenter;
 import com.xun.samemvpdemo.model.DropDownAudioBean;
 import com.xun.samemvpdemo.retrofit.ApiCallback;
