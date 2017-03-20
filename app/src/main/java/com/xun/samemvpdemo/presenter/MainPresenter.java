@@ -5,13 +5,15 @@ import com.xun.samemvpdemo.base.BasePresenter;
 import com.xun.samemvpdemo.model.DropDownAudioBean;
 import com.xun.samemvpdemo.retrofit.ApiCallback;
 
+import javax.inject.Inject;
+
 /**
  * Created by xunwang on 17/2/24.
  */
 
 public class MainPresenter extends BasePresenter<IMainView>{
-    public MainPresenter(IMainView view) {
-        attachView(view);
+    @Inject
+    public MainPresenter() {
     }
 
     public void loadDataByRetrofitRxjava() {

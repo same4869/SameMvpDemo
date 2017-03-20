@@ -63,10 +63,10 @@ public class SameMvpMainActivity extends BaseMvpActivity<MainPresenter> implemen
         return R.layout.activity_same_mvp_main;
     }
 
-    @Override
-    protected MainPresenter createPresenter() {
-        return new MainPresenter(this);
-    }
+//    @Override
+//    protected MainPresenter createPresenter() {
+//        return new MainPresenter(this);
+//    }
 
     @Override
     public void getDataSuccess(BaseBean model) {
