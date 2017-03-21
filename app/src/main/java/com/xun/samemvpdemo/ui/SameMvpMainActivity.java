@@ -37,6 +37,7 @@ public class SameMvpMainActivity extends BaseMvpActivity<MainPresenter> implemen
     protected void initView() {
         getActivityComponent().inject(this);
         mainPresenter.attachView(this);
+        Toast.makeText(getApplicationContext(), "我是修改了bug的呵呵呵呵！！！", Toast.LENGTH_SHORT).show();
     }
 
     @Override
