@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 
 import com.squareup.leakcanary.RefWatcher;
 import com.xun.samemvpdemo.app.SameMvpApplication;
+import com.xun.samemvpdemo.injector.component.ActivityComponent;
+import com.xun.samemvpdemo.injector.component.DaggerActivityComponent;
+import com.xun.samemvpdemo.injector.module.ActivityModule;
 
 import butterknife.ButterKnife;
 import me.yokeyword.fragmentation.SupportActivity;
@@ -20,6 +23,7 @@ import me.yokeyword.fragmentation.SupportActivity;
 public abstract class BaseActivity extends SupportActivity {
     public Activity mActivity;
     public ProgressDialog progressDialog;
+    private ActivityComponent mActivityComponent;
 
     protected abstract void initView();
 
@@ -65,8 +69,17 @@ public abstract class BaseActivity extends SupportActivity {
 
     public void dismissProgressDialog() {
         if (progressDialog != null && progressDialog.isShowing()) {
-            // progressDialog.hide();会导致android.view.WindowLeaked
             progressDialog.dismiss();
         }
+    }
+
+    public ActivityComponent getActivityComponent() {
+        if (mActivityComponent == null) {
+            mActivityComponent = DaggerActivityComponent.builder()
+//                    .applicationComponent(App.getApplicationComponent())
+                    .activityModule(new ActivityModule(this))
+                    .build();
+        }
+        return mActivityComponent;
     }
 }

@@ -8,6 +8,8 @@ import com.squareup.leakcanary.RefWatcher;
 import com.xun.samemvpdemo.app.SameMvpApplication;
 import com.xun.samemvpdemo.injector.component.DaggerFragmentComponent;
 import com.xun.samemvpdemo.injector.component.FragmentComponent;
+import com.xun.samemvpdemo.injector.module.ActivityModule;
+import com.xun.samemvpdemo.injector.module.FragmentModule;
 
 import butterknife.ButterKnife;
 import me.yokeyword.fragmentation.SupportFragment;
@@ -16,7 +18,7 @@ import me.yokeyword.fragmentation.SupportFragment;
  * Created by xunwang on 17/3/16.
  */
 
-public class BaseFragment extends SupportFragment{
+public class BaseFragment extends SupportFragment {
     protected View rootView;
     private FragmentComponent fragmentComponent;
 
@@ -37,8 +39,8 @@ public class BaseFragment extends SupportFragment{
         if (fragmentComponent == null) {
             fragmentComponent = DaggerFragmentComponent.builder()
                     //.applicationComponent(App.getApplicationComponent())
-//                    .activityModule(new ActivityModule((BaseActivity) getActivity()))
-//                    .fragmentModule(new FragmentModule(this))
+                    .activityModule(new ActivityModule((BaseActivity) getActivity()))
+                    .fragmentModule(new FragmentModule(this))
                     .build();
         }
 

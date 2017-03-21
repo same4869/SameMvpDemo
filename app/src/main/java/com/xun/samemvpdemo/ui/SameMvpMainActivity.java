@@ -2,20 +2,24 @@ package com.xun.samemvpdemo.ui;
 
 import android.support.annotation.IdRes;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
-import com.xun.samemvpdemo.view.IMainView;
-import com.xun.samemvpdemo.presenter.MainPresenter;
 import com.xun.samemvpdemo.R;
 import com.xun.samemvpdemo.base.BaseMvpActivity;
 import com.xun.samemvpdemo.fragment.MusicFragment;
 import com.xun.samemvpdemo.fragment.NewsFragment;
 import com.xun.samemvpdemo.fragment.VideoFragment;
 import com.xun.samemvpdemo.model.BaseBean;
+import com.xun.samemvpdemo.model.DropDownAudioBean;
+import com.xun.samemvpdemo.presenter.MainPresenter;
+import com.xun.samemvpdemo.view.IMainView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import me.yokeyword.fragmentation.SupportFragment;
@@ -25,10 +29,14 @@ public class SameMvpMainActivity extends BaseMvpActivity<MainPresenter> implemen
     FrameLayout contentContainer;
     @BindView(R.id.main_bottomBar)
     BottomBar mainBottomBar;
+    @Inject
+    MainPresenter mainPresenter;
     private List<SupportFragment> fragments = new ArrayList<>();
 
     @Override
     protected void initView() {
+        getActivityComponent().inject(this);
+        mainPresenter.attachView(this);
     }
 
     @Override
@@ -53,9 +61,7 @@ public class SameMvpMainActivity extends BaseMvpActivity<MainPresenter> implemen
                 }
             }
         });
-        //mvpPresenter.loadDataByRetrofitRxjava();
-//        Intent intent = new Intent(SameMvpMainActivity.this,UnInstallServer.class);
-//        startService(intent);
+        mainPresenter.loadDataByRetrofitRxjava();
     }
 
     @Override
@@ -63,21 +69,24 @@ public class SameMvpMainActivity extends BaseMvpActivity<MainPresenter> implemen
         return R.layout.activity_same_mvp_main;
     }
 
-//    @Override
-//    protected MainPresenter createPresenter() {
-//        return new MainPresenter(this);
-//    }
-
     @Override
     public void getDataSuccess(BaseBean model) {
         if (model != null) {
-//            Toast.makeText(getApplicationContext(), model.getList().get(0).getAdoContent(), Toast.LENGTH_LONG).show();
+            DropDownAudioBean dropDownAudioBean = (DropDownAudioBean) model;
+            Toast.makeText(this, dropDownAudioBean.getList().get(0).getAdoContent(), Toast.LENGTH_SHORT)
+                    .show();
         }
     }
 
     @Override
-    public void getDataFail(String msg) {
+    protected void onDestroy() {
+        super.onDestroy();
+        mainPresenter.detachView();
+    }
 
+    @Override
+    public void getDataFail(String msg) {
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -14,7 +14,6 @@ public interface ApiStores {
     //baseUrl
     String API_SERVER_URL = "http://appapi.tingtoutiao.com/myAppPro/";
 
-    //加载天气
     @GET("audio/getDropDownAudio.do?cId=0")
     Observable<DropDownAudioBean> loadDataByRetrofitRxjava();
 }
