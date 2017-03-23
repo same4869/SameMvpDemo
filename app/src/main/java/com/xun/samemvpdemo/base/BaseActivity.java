@@ -7,8 +7,6 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.squareup.leakcanary.RefWatcher;
-import com.xun.samemvpdemo.app.SameMvpApplicationLike;
 import com.xun.samemvpdemo.injector.component.ActivityComponent;
 import com.xun.samemvpdemo.injector.component.DaggerActivityComponent;
 import com.xun.samemvpdemo.injector.module.ActivityModule;
@@ -35,8 +33,8 @@ public abstract class BaseActivity extends SupportActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        RefWatcher refWatcher = SameMvpApplicationLike.getRefWatcher(this);
-        refWatcher.watch(this);
+//        RefWatcher refWatcher = SameMvpApplicationLike.getRefWatcher(this);
+//        refWatcher.watch(this);
         ButterKnife.bind(this);
         mActivity = this;
         initView();

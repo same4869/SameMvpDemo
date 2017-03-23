@@ -1,5 +1,6 @@
 package com.xun.samemvpdemo.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -16,11 +17,14 @@ import com.xun.samemvpdemo.base.BaseMvpFragment;
 import com.xun.samemvpdemo.model.BaseBean;
 import com.xun.samemvpdemo.model.DropDownAudioBean;
 import com.xun.samemvpdemo.presenter.MainPresenter;
+import com.xun.samemvpdemo.ui.CommWebViewActivity;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import rx.functions.Action1;
+
+import static com.xun.samemvpdemo.ui.CommWebViewActivity.COMMON_WEB_URL;
 
 /**
  * Created by xunwang on 17/3/13.
@@ -32,6 +36,8 @@ public class MusicFragment extends BaseMvpFragment {
     Button testBtn;
     @BindView(R.id.test_tv)
     TextView testTv;
+    @BindView(R.id.open_web)
+    Button openWeb;
     @Inject
     MainPresenter mainPresenter;
 
@@ -64,6 +70,18 @@ public class MusicFragment extends BaseMvpFragment {
             public void call(Void aVoid) {
                 Log.d("kkkkkkkk", "testBtn click");
                 mainPresenter.loadDataByRetrofitRxjava();
+            }
+        });
+        RxView.clicks(openWeb).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                String url = "http://o.officeweb365.com/p/pv" +
+                        ".aspx?PowerPointView=SlideShowView&WOPISrc=http%3A%2F%2Fow365%2Fwopi%2Ffiles%2F%40%2Fwopi" +
+                        "%3FvId%3Dl9zK8w%40PwBF0iVsldMbGlg%3D%3D&bs=b2ZmaWNld2ViMzY1LmNvbS44MFxmcmVlLnBwdHg=&token" +
+                        "=FhFgCESbt9bivJh_DeYWyUQyfISM_NgE&wdSlideId=256";
+                Intent intent = new Intent(getActivity(), CommWebViewActivity.class);
+                intent.putExtra(COMMON_WEB_URL, url);
+                startActivity(intent);
             }
         });
     }

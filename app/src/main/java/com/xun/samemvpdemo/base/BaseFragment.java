@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.squareup.leakcanary.RefWatcher;
-import com.xun.samemvpdemo.app.SameMvpApplicationLike;
 import com.xun.samemvpdemo.injector.component.DaggerFragmentComponent;
 import com.xun.samemvpdemo.injector.component.FragmentComponent;
 import com.xun.samemvpdemo.injector.module.ActivityModule;
@@ -31,8 +29,8 @@ public class BaseFragment extends SupportFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        RefWatcher refWatcher = SameMvpApplicationLike.getRefWatcher(getActivity());
-        refWatcher.watch(this);
+//        RefWatcher refWatcher = SameMvpApplicationLike.getRefWatcher(getActivity());
+//        refWatcher.watch(this);
     }
 
     public FragmentComponent getFragmentComponent() {

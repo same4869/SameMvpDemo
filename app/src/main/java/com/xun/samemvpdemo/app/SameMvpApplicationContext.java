@@ -1,6 +1,5 @@
 package com.xun.samemvpdemo.app;
 
-import android.app.Application;
 import android.content.Context;
 
 /**
@@ -8,6 +7,6 @@ import android.content.Context;
  */
 
 public class SameMvpApplicationContext {
-    public static Application application = null;
+    public static SameMvpApplication application = null;
     public static Context context = null;
 }
