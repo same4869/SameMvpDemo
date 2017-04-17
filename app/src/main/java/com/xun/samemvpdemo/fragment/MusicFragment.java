@@ -75,10 +75,7 @@ public class MusicFragment extends BaseMvpFragment {
         RxView.clicks(openWeb).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                String url = "http://o.officeweb365.com/p/pv" +
-                        ".aspx?PowerPointView=SlideShowView&WOPISrc=http%3A%2F%2Fow365%2Fwopi%2Ffiles%2F%40%2Fwopi" +
-                        "%3FvId%3Dl9zK8w%40PwBF0iVsldMbGlg%3D%3D&bs=b2ZmaWNld2ViMzY1LmNvbS44MFxmcmVlLnBwdHg=&token" +
-                        "=FhFgCESbt9bivJh_DeYWyUQyfISM_NgE&wdSlideId=256";
+                String url = "http://xwang.space/";
                 Intent intent = new Intent(getActivity(), CommWebViewActivity.class);
                 intent.putExtra(COMMON_WEB_URL, url);
                 startActivity(intent);
