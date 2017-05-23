@@ -17,6 +17,7 @@ import com.xun.samemvpdemo.base.BaseMvpFragment;
 import com.xun.samemvpdemo.model.BaseBean;
 import com.xun.samemvpdemo.model.DropDownAudioBean;
 import com.xun.samemvpdemo.presenter.MainPresenter;
+import com.xun.samemvpdemo.setting.SharedSetting;
 import com.xun.samemvpdemo.ui.CommWebViewActivity;
 
 import javax.inject.Inject;
@@ -38,6 +39,10 @@ public class MusicFragment extends BaseMvpFragment {
     TextView testTv;
     @BindView(R.id.open_web)
     Button openWeb;
+    @BindView(R.id.test_share_setting)
+    Button testShareSetting;
+    @BindView(R.id.test_share_setting2)
+    Button testShareSetting2;
     @Inject
     MainPresenter mainPresenter;
 
@@ -79,6 +84,18 @@ public class MusicFragment extends BaseMvpFragment {
                 Intent intent = new Intent(getActivity(), CommWebViewActivity.class);
                 intent.putExtra(COMMON_WEB_URL, url);
                 startActivity(intent);
+            }
+        });
+        RxView.clicks(testShareSetting).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                SharedSetting.setSavedPenAddress("我来自SameMvpDemo");
+            }
+        });
+        RxView.clicks(testShareSetting2).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                testTv.setText(SharedSetting.getSavedPenAddress());
             }
         });
     }

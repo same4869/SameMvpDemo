@@ -31,6 +31,10 @@
         <activity
             android:name=".ui.CommWebViewActivity"
             android:screenOrientation="landscape"/>
+        <provider
+            android:name="commlib.xun.com.commlib.sharedsetting.CommSharedSettingContentProvider"
+            android:authorities="commlib.xun.com.commlib.sharedsetting.CommSharedSettingContentProvider"
+            android:exported="true"/>
     </application>
 
 </manifest>

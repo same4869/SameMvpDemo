@@ -22,4 +22,16 @@
         android:layout_height="wrap_content"
         android:text="Office Web 365 收费不好扩展"/>
 
+    <Button
+        android:id="@+id/test_share_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="存值"/>
+
+    <Button
+        android:id="@+id/test_share_setting2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取值"/>
+
 </LinearLayout>
